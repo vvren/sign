@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>后台管理</title>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/admit.css">
+  
+   </head>
+  <body>
+  <div class="header">
+  <div class="container-fluid">
+        <div class="row">
+          <div class="header-left col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <div class="left-cover">
+              <img src="/images/logo.png">
+              <h3>管理后台</h3>
+            </div>
+          </div>
+          <div class="header-right col-xs-12 col-sm-9 col-md-9 col-lg-9">
+            <div class="right-cover">
+              <span><a href="">管理员</a></span>
+              <ul>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      <div class="container-fluid">
+        <div class="row">
+        <div class="center-left col-lg-3 col-md-3 col-sm-3 hidden-xs">
+          <ul class="left-ul">
+            <li><a href="http://localhost:3000/main">首页</a></li>
+          <li>
+            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">内容</a>
+            <div class="collapse" id="collapseExample">
+                <div class="content-box">
+                    <ul class="content-hidden">
+                      <li><form action="/manager/news/newslist"  enctype=""multipart/form-data><button type="submit"  style="border: none;background-color: #182838;color: #ccc;width: 100%;height: 100%">内容列表</button></form></li>
+                      <li><form action="/manager/news"  enctype=""multipart/form-data><button type="submit" style="border: none;background-color: #182838;color: #ccc;width: 100%;height: 100%">添加内容</button></form></li>
+                    </ul>
+                </div>
+            </div>
+          </li>
+          <li><a href="">分类</a></li>
+          <li><a href="">评论列表</a></li>
+          <li><a href="">用户</a></li>
+          <li><a href="">角色</a></li>
+          <li><a href="">文件</a></li>
+        </ul>
+      </div>

@@ -1,0 +1,29 @@
+<%-include header1%>
+<button class="btn btn-default" id="btn" data-toggle='modal' data-target='#dialog'>弹出对话框</button>
+<div class="modal fade" id="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header"  style="background-color: #5CB85C;">
+				<h4 style="color: #fff;font-family: 微软雅黑">登录</h4>
+			</div>
+			<div class="modal-body">
+				<form action="/login/dologin" method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" name="uname" placeholder="用户名">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="upwd" placeholder="密码">
+					</div>
+					<p><a href="">忘记密码？</a></p>
+					<button type="submit" class="btn btn-success btn-block">登录</button>
+				</form>
+			</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default btn-block" style="background-color: #BDC3C7;color: #fff">还不是用户？注册</button>
+		</div>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+</body>
+</html>

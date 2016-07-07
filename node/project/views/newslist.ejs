@@ -1,0 +1,41 @@
+<%-include header%>
+<div class="center-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
+<button type="button" class="btn btn-primary" style="margin:2%">添加内容</button>
+<table class="table table-bordered ">
+		<tr>
+			<td>日期</td>
+			<td>标题</td>
+			<td>内容</td>
+			<td>图片</td>
+			<td>操作</td>
+		</tr>
+		<%
+			for(var i=0;i<n.length;i++){
+		%>
+		<tr>
+			<td><%=n[i].date%></td>
+			<td><%=n[i].title%></td>
+			<td><%=n[i].content%></td>
+			<!-- <td><%=n[i].imgs%></td> -->
+			<td>
+				<img src="<%=n[i].imgs[0]%>">
+			</td>
+			<td>
+				<a href="/manager/news/delNews?newsId=<%=n[i].newsId%>">删除</a>
+				<a href="javascript:void(0);" onclick="doDel('<%=n[i].newsId%>')">post删除</a>
+			</td>
+		</tr>
+
+		<%}%>
+	</table>
+	<script type="text/javascript">
+		
+		function doDel(id){
+			$.post('delNews',{newsId:id},function(data){
+				window.location.reload();
+				}
+			);
+		}
+	</script>
+	</div>
+<%-include footer%>

@@ -1,0 +1,85 @@
+var express=require('express');
+var router=express.Router();
+var multer=require('multer');
+var upload=multer({dest:'./public/upload'}).array('imgs',5);
+router.get('/',function(req,res){
+	res.render('addnews');
+});
+//新增功能
+router.post('/addNews',function(req,res){
+	upload(req,res,function(err){
+		if (err) {
+			res.send('保存失败');
+		}else{
+			var news=req.body;
+			//生成新闻编号
+			news.newsId=uuid();
+			news.count=0;
+			var len=req.files.length;
+			news.imgs=[];
+			for(var i=0;i<len;i++){
+				news.imgs[i]='/upload/'+req.files[i].filename;
+			}
+			req.app.locals.news.push(news);
+			res.redirect('./newslist');
+		}
+	});
+});	
+
+//列表功能
+router.get('/newslist',function(req,res){
+	res.render('newslist',{n:req.app.locals.news});
+});
+//get删除功能
+router.get('/delNews',function(req,res){
+	var id=req.query.newsId;
+	var index=null;
+	for(var i=0;i<req.app.locals.news.length;i++){
+		var n=req.app.locals.news[i];
+		if (id===n.newsId) {
+			index=i;
+			break;
+		}
+	}
+	if (index !=null) {
+		req.app.locals.news.splice(index,1);
+	}
+	res.redirect('./newslist');
+});
+//post 删除
+router.post('/delNews',function(req,res){
+	var id=req.body.newsId;
+	var index=null;
+	for(var i=0;i<req.app.locals.news.length;i++){
+		var n=req.app.locals.news[i];
+		if (id===n.newsId) {
+			index=i;
+			break;
+		}
+	}
+	if (index !=null) {
+		req.app.locals.news.splice(index,1);
+	}
+	res.end();
+});
+
+
+
+
+
+
+function uuid() {
+    var s = [];
+    var hexDigits = "0123456789abcdef";
+    for (var i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
+
+    var uuid = s.join("");
+    return uuid;
+}
+
+module.exports=router;

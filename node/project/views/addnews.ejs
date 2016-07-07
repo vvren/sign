@@ -1,0 +1,32 @@
+<%-include header%>
+	<div class="center-right col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		<form action="/manager/news/addNews" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label>
+					标题：
+				</label>
+				<input type="text" class="form-control" name='title' placeholder="请填写新闻标题">
+			</div>
+			<div class="form-group">
+				<label>
+					日期：
+				</label>
+				<input type="date" class="form-control" name='date' placeholder="请填写新闻日期">
+			</div>
+			
+			<div class="form-group form-inline">
+				<label>文件：</label>
+				<input type="file" class="form-control" name="imgs" multiple="true">
+			</div>
+			<div class="form-group">
+				<label>
+					新闻详情：
+				</label>
+				<textarea class="form-control" rows="10" name="content"></textarea>
+			</div>
+			<div >
+				<input type="submit" class="btn btn-primary">
+			</div>
+		</form>
+	</div>
+<%-include footer%>
